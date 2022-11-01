@@ -6,63 +6,61 @@ import 'package:the_chess_engine/src/chess_opening_directory/cod_map.dart';
 import '../chess_board/chess_board.dart';
 
 class HomePage extends StatelessWidget {
-
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context ) {
-    final ChessOpeningDirectory cod = ChessOpeningDirectory('test', ChessColor.WHITE);
+  Widget build(BuildContext context) {
+    final ChessOpeningDirectory cod =
+        ChessOpeningDirectory('test', ChessColor.WHITE);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Chess Brain"),),
+      appBar: AppBar(
+        title: const Text("Chess Brain"),
+      ),
       body: SafeArea(
-
         child: Center(
-
           child: Container(
-            margin: const EdgeInsets.all(50),
-            decoration: const BoxDecoration(
-              // color: Colors.lightBlueAccent,
-            ),
-            child: ChangeNotifierProvider(
-              create: (context) => cod,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const Expanded(
-                    child: Center(
+              // margin: const EdgeInsets.all(50),
+              decoration: const BoxDecoration(
+                  // color: Colors.lightBlueAccent,
+                  ),
+              child: ChangeNotifierProvider(
+                create: (context) => cod,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Expanded(
+                        child: Center(
                       child: AspectRatio(
                         aspectRatio: 1,
-                      child: ChessMap(),
-                    ),
-                  )),
-                  Expanded(
-                    child: Center(
-                      child: Column(
-                        children: [
-                          const Expanded(
-                            child: Center(
-                              child: AspectRatio(
-                                aspectRatio: 1,
-                                child: ChessBoard(),
+                        child: ChessMap(),
+                      ),
+                    )),
+                    Expanded(
+                      child: Center(
+                        child: Column(
+                          children: [
+                            const Expanded(
+                              child: Center(
+                                child: AspectRatio(
+                                  aspectRatio: 1,
+                                  child: ChessBoard(),
+                                ),
                               ),
                             ),
-                          ),
-                       Consumer<ChessOpeningDirectory>(
-                       builder:(context, cod, child) => ElevatedButton(
-                              onPressed: ()=>{cod.registerPath()},
-                              child: const Text("Register Move")
-
-                          ),),
-                        ],
+                            Consumer<ChessOpeningDirectory>(
+                              builder: (context, cod, child) => ElevatedButton(
+                                  onPressed: () => {cod.registerPath()},
+                                  child: const Text("Register Move")),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ),
+                  ],
+                ),
+              )),
         ),
       ),
     );

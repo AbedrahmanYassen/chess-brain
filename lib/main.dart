@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:the_chess_engine/src/not_taking/note_taker.dart';
 
 import 'src/app.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
 import 'src/home_page/home_page.dart';
 
+//Things I need to add :
+// expand each part to half of the screen.
+// adding floating button on the center of the screen
 void main() async {
   // Set up the SettingsController, which will glue user settings to multiple
   // Flutter Widgets.
@@ -21,8 +25,6 @@ void main() async {
   // runApp(const HomePage());
 
   runApp(const MyApp());
-
-
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +38,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: const HomePage(),
+      home: Scaffold(
+        body: Center(
+          child: NoteTakingWidget(
+            child: Container(
+              width: 100,
+              height: 100,
+              color: Colors.blue,
+            ),
+            dx: -20,
+            dy: 15,
+          ),
+        ),
+      ) /*const HomePage()*/,
     );
   }
 }
