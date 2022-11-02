@@ -38,19 +38,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: Scaffold(
-        body: Center(
-          child: NoteTakingWidget(
-            child: Container(
-              width: 100,
-              height: 100,
-              color: Colors.blue,
-            ),
-            dx: -20,
-            dy: 15,
-          ),
-        ),
-      ) /*const HomePage()*/,
+      home: const HomePage(),
     );
   }
 }
